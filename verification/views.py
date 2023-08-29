@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login as auth_login, logout
 from django.contrib import messages
 
 # Create your views here.
@@ -34,7 +34,7 @@ def login(request):
         password = request.POST['password']
         user = authenticate (request, username=username, password=password)
         if user is not None:
-            login(request, user)
+            auth_login(request, user)
             first_name = request.user.first_name
             return render(request, 'verification/index.html', { 'first_name': first_name })
         else:

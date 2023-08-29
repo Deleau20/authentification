@@ -6,7 +6,7 @@
 {% for message in messages %}
 <p>{{ message }}</p>
 {% endfor %}
-    <form action="/register" method="get">
+    <form action="{% url 'login' %}" method="post">
         {% csrf_token %}
         <div>
             <label for="username">Nom d'utilisateur</label>
