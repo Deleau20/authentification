@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<center>
+<h4>Register here</h4>
+{% for message in messages %}
+{{ message }}
+{% endfor %}
+    <form action="/register" method="post">
+        {% csrf_token %}
+        <div>
+            <label for="username">Nom d'utilisateur</label>
+            <input type="text" name="username" id="username" placeholder="Nom d'utilisateur" required>
+        </div>
+        <div>
+            <label for="firstname">Prenom</label>
+            <input type="text" name="firstname" id="firstname" placeholder="Nom d'utilisateur" required>
+        </div>
+        <div>
+            <label for="lastname">Nom</label>
+            <input type="text" name="lastname" id="lastname" placeholder="Nom d'utilisateur" required>
+        </div>
+        <div>
+            <label for="email">Adresse email</label>
+            <input type="email" name="email" id="email" required>
+        </div>
+        <div>
+            <label for="password">Mot de passe</label>
+            <input type="password" name="password" id="password" required>
+        </div>
+        <div>
+            <label for="password_confirm">Confirmer le mot de passe</label>
+            <input type="password" name="password_confirm" id="password_confirm" required>
+        </div>
+        <input type="submit" value="S'inscrire">
+    </form>
+</center>
+{% endblock %}
